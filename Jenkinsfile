@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        IMAGE_NAME = "muhammadahmedyaqoob/mlops-assignment-1:${env.BUILD_ID}"
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -9,16 +12,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build("MuhammadAhmedYaqoob/mlops-assignment-1:${env.BUILD_ID}")
+                    dockerImage = docker.build(IMAGE_NAME)
                 }
             }
         }
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('', 'mlops-assignment1') {
-                        // Ensure dockerImage is accessible here; if needed, declare it at a higher scope
-                        def dockerImage = docker.build("MuhammadAhmedYaqoob/mlops-assignment-1:${env.BUILD_ID}")
+                    docker.withRegistry('https://index.docker.io/v1/', 'mlops-assignment1') {
                         dockerImage.push()
                     }
                 }
