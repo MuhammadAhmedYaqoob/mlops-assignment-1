@@ -14,9 +14,10 @@ jobs:
           python-version: '3.x'
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install --no-cache-dir -r requirements.txt
+          pip install --upgrade pip
+          pip install -r requirements.txt
           pip install pytest
-          pip list  # Check installed packages in logs
+      - name: Train Model  # Model will be trained before testingg automated.
+        run: python ml_model/model.py
       - name: Run tests
         run: pytest --maxfail=1 --disable-warnings -q
