@@ -9,7 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("MuhammadAhmedYaqoob/mlops-assignment-1:${env.BUILD_ID}")
+                    def dockerImage = docker.build("MuhammadAhmedYaqoob/mlops-assignment-1:${env.BUILD_ID}")
                 }
             }
         }
@@ -17,6 +17,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', 'mlops-assignment1') {
+                        // Ensure dockerImage is accessible here; if needed, declare it at a higher scope
+                        def dockerImage = docker.build("MuhammadAhmedYaqoob/mlops-assignment-1:${env.BUILD_ID}")
                         dockerImage.push()
                     }
                 }
