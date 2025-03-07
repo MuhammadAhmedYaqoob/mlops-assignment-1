@@ -27,15 +27,8 @@ pipeline {
         }
     }
     post {
-        success {
-            emailext subject: "Deployment Successful",
-                     body: "The deployment of your application was successful.",
-                     to: 'ra147001y@gmail.com'
-        }
-        failure {
-            emailext subject: "Deployment Failed",
-                     body: "The deployment encountered issues. Please check Jenkins logs.",
-                     to: 'ra147001y@gmail.com'
+        always {
+            emailext body: 'Pipeline is accomplished.', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
     }
 }
