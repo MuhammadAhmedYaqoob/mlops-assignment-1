@@ -1,2 +1,5 @@
-Flask
-Pytest
+flask
+numpy
+pytest
+pickle5
+scikit-learn
