@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+
 def load_and_preprocess_data(csv_path="dataset.csv"):
     df = pd.read_csv(csv_path)
     X = df.drop(columns=["label"])
