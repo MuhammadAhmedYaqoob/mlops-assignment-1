@@ -1,4 +1,6 @@
 flask
 numpy
-pytest
+pandas
 scikit-learn
+pytest
+unittest
