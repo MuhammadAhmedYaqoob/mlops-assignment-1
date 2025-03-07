@@ -30,12 +30,12 @@ pipeline {
         success {
             emailext subject: "Deployment Successful",
                      body: "The deployment of your application was successful.",
-                     to: 'ahmedyaqoobbusiness@gmail.com'
+                     to: 'ra147001y@gmail.com'
         }
         failure {
             emailext subject: "Deployment Failed",
                      body: "The deployment encountered issues. Please check Jenkins logs.",
-                     to: 'ahmedyaqoobbusiness@gmail.com'
+                     to: 'ra147001y@gmail.com'
         }
     }
 }
